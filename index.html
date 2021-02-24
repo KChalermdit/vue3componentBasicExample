@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>Test emits</title>
+  </head>
+  <body>
+    <h1>app 1</h1>
+    <hr />
+    <div id="components-demo">
+      <button-counter></button-counter>
+      <button-counter></button-counter>
+      <button-counter></button-counter>
+    </div>
+    <h1>app 2</h1>
+    <hr />
+    <div id="blog-post-demo" class="demo">
+      <blog-post title="My journey with Vue"></blog-post>
+      <blog-post title="Blogging with Vue"></blog-post>
+      <blog-post title="Why Vue is so fun"></blog-post>
+    </div>
+
+    <h1>app 3</h1>
+    <hr />
+    <div id="blog-posts">
+      <blog-post
+        v-for="post in posts"
+        :key="post.id"
+        :title="post.title"
+      ></blog-post>
+    </div>
+
+    <h1>app 4</h1>
+    <hr />
+    <div id="blog-posts-events-demo" class="demo">
+      <div :style="{ fontSize: postFontSize + 'em' }">
+        <blog-post
+          v-for="post in posts"
+          :key="post.id"
+          :title="post.title"
+          @enlarge-text="postFontSize += 0.1"
+        ></blog-post>
+      </div>
+    </div>
+
+    <h1>app 5</h1>
+    <hr />
+    <div id="blog-posts-events-demo5" class="demo">
+      <div :style="{ fontSize: postFontSize + 'em' }">
+        <blog-post
+          v-for="post in posts"
+          :key="post.id"
+          :title="post.title"
+          @enlarge-text="onEnlargeText"
+        ></blog-post>
+        <!-- @enlarge-text="postFontSize += $event" -->
+      </div>
+    </div>
+    <script src="./main.js"></script>
+  </body>
+</html>
